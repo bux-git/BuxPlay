@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Bux手机助手</string>
+    <string name="settings">设置</string>
+    <string name="account">帐号</string>
+    <string name="open_string">打开</string>
+    <string name="close_string"/>
+
+    <string name="recommend_title">推荐</string>
+    <string name="top_list_title">排行</string>
+    <string name="games_title">游戏</string>
+    <string name="category_title">分类</string>
+</resources>
