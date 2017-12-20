@@ -9,4 +9,8 @@
     <string name="top_list_title">排行</string>
     <string name="games_title">游戏</string>
     <string name="category_title">分类</string>
+    <string name="menu_search"/>
+
+
+    <string name="gouwuche">&#xe63f;</string>
 </resources>

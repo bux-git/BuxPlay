@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTooBar() {
-        mToolbar.inflateMenu(R.menu.main_lef_menu);
+        mToolbar.inflateMenu(R.menu.toobar_menu);
     }
 
 
