@@ -9,11 +9,13 @@ package com.example.lym.buxplay.ui.adapter.bean;
 public class FragmentInfo {
 
     private String title;
+    private String imgStr;
     private Class fragment;
 
-    public FragmentInfo(String title, Class fragment) {
+    public FragmentInfo(String title, Class fragment,String imgStr) {
         this.title = title;
         this.fragment = fragment;
+        this.imgStr=imgStr;
     }
 
     public String getTitle() {
@@ -30,5 +32,13 @@ public class FragmentInfo {
 
     public void setFragment(Class fragment) {
         this.fragment = fragment;
+    }
+
+    public String getImgStr() {
+        return imgStr;
+    }
+
+    public void setImgStr(String imgStr) {
+        this.imgStr = imgStr;
     }
 }

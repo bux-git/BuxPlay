@@ -1,5 +1,6 @@
 package com.example.lym.buxplay.ui.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -20,6 +21,7 @@ import com.example.lym.buxplay.ui.fragment.CategoryFragment;
 import com.example.lym.buxplay.ui.fragment.GamesFragment;
 import com.example.lym.buxplay.ui.fragment.RecommendFragment;
 import com.example.lym.buxplay.ui.fragment.TopListFragment;
+import com.example.lym.buxplay.ui.widget.TabView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +54,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initTabLayout() {
-        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(),initFragments()));
-        mTabLayout.setupWithViewPager(mViewPager);
+        List<FragmentInfo> fragmentInfos = initFragments();
+        mViewPager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), fragmentInfos));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+        mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        int textColor= Color.GRAY;
+        int iconSize=22;
+        int titleSize=10;
+        int selsectedColor =getResources().getColor(R.color.colorAccent);
+
+        for (int i = 0; i < fragmentInfos.size(); i++) {
+            FragmentInfo info = fragmentInfos.get(i);
+            mTabLayout.addTab(  mTabLayout.newTab().setCustomView(new TabView(this,info.getImgStr(),info.getTitle(),textColor,selsectedColor,iconSize,titleSize)));
+        }
+
     }
 
     private void initTooBar() {
@@ -93,10 +108,10 @@ public class MainActivity extends AppCompatActivity {
 
     private List<FragmentInfo> initFragments() {
         List<FragmentInfo> fragmentInfos = new ArrayList<>();
-        fragmentInfos.add(new FragmentInfo(getString(R.string.recommend_title), RecommendFragment.class));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.recommend_title), RecommendFragment.class, getString(R.string.ic_recommend)));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class, getString(R.string.ic_top_list)));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class, getString(R.string.ic_games)));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class, getString(R.string.ic_category)));
         return fragmentInfos;
     }
 }
