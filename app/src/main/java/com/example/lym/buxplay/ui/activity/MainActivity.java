@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.lym.buxplay.R;
+import com.example.lym.buxplay.typeface.BIcons;
 import com.example.lym.buxplay.ui.adapter.ViewPagerAdapter;
 import com.example.lym.buxplay.ui.adapter.bean.FragmentInfo;
 import com.example.lym.buxplay.ui.fragment.CategoryFragment;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         initDrawerLayout();
         initTabLayout();
     }
+
 
     private void initTabLayout() {
         List<FragmentInfo> fragmentInfos = initFragments();
@@ -108,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
     private List<FragmentInfo> initFragments() {
         List<FragmentInfo> fragmentInfos = new ArrayList<>();
-        fragmentInfos.add(new FragmentInfo(getString(R.string.recommend_title), RecommendFragment.class, getString(R.string.ic_recommend)));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class, getString(R.string.ic_top_list)));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class, getString(R.string.ic_games)));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class, getString(R.string.ic_category)));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.recommend_title), RecommendFragment.class, BIcons.Icon.bux_recommend.getFormattedName()));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class,  BIcons.Icon.bux_toplist.getFormattedName()));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class,  BIcons.Icon.bux_games.getFormattedName()));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class,  BIcons.Icon.bux_category.getFormattedName()));
         return fragmentInfos;
     }
 }

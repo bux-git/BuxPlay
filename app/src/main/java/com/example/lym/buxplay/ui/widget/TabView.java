@@ -1,14 +1,13 @@
 package com.example.lym.buxplay.ui.widget;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.lym.buxplay.R;
+import com.mikepenz.iconics.view.IconicsTextView;
 
 /**
  * @Description：
@@ -18,8 +17,8 @@ import com.example.lym.buxplay.R;
 
 public class TabView extends LinearLayout {
 
-    private TextView mTvIcons;
-    private TextView mTvTitle;
+    private IconicsTextView mTvIcons;
+    private IconicsTextView mTvTitle;
     private int mSelectedColor;
     private int mColor;
 
@@ -48,9 +47,6 @@ public class TabView extends LinearLayout {
         mTvIcons = findViewById(R.id.tv_icon);
         mTvTitle = findViewById(R.id.tv_tab);
 
-        Typeface typeface = Typeface.createFromAsset(context.getAssets(), "iconfont.ttf");
-
-        mTvIcons.setTypeface(typeface);
         mTvIcons.setTextColor(color);
         mTvIcons.setTextSize(iconSize);
 
@@ -69,19 +65,19 @@ public class TabView extends LinearLayout {
         mTvTitle.setTextColor(color);
     }
 
-    public TextView getTvIcons() {
+    public IconicsTextView getTvIcons() {
         return mTvIcons;
     }
 
-    public void setTvIcons(TextView tvIcons) {
+    public void setTvIcons(IconicsTextView tvIcons) {
         mTvIcons = tvIcons;
     }
 
-    public TextView getTvTitle() {
+    public IconicsTextView getTvTitle() {
         return mTvTitle;
     }
 
-    public void setTvTitle(TextView tvTitle) {
+    public void setTvTitle(IconicsTextView tvTitle) {
         mTvTitle = tvTitle;
     }
 

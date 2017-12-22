@@ -1,18 +1,23 @@
 package com.example.lym.buxplay.ui.fragment;
 
-import android.graphics.Typeface;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.eftimoff.androipathview.PathView;
 import com.example.lym.buxplay.R;
+import com.example.lym.buxplay.typeface.BIcons;
+import com.mikepenz.iconics.Iconics;
+import com.mikepenz.iconics.IconicsDrawable;
 
 /**
  * @Description：推荐
@@ -32,32 +37,22 @@ public class RecommendFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        PathView pathView = view.findViewById(R.id.path_view);
 
-        pathView.getPathAnimator()
-                .delay(100)
-                .duration(500)
-                .listenerStart(new PathView.AnimatorBuilder.ListenerStart() {
-                    @Override
-                    public void onAnimationStart() {
-                        Log.d(TAG, "onAnimationStart: ");
-                    }
-                })
-                .listenerEnd(new PathView.AnimatorBuilder.ListenerEnd() {
-                    @Override
-                    public void onAnimationEnd() {
-                        Log.d(TAG, "onAnimationEnd: ");
-                    }
-                })
-                .interpolator(new AccelerateDecelerateInterpolator())
-                .start();
-        ;
+        Drawable drawable=new IconicsDrawable(getActivity())
+                .icon(BIcons.Icon.bux_games)
+                .color(Color.RED)
+                .sizeDp(24);
+        ImageView imgView= view.findViewById(R.id.iv_img);
+        imgView.setImageDrawable(drawable);
 
-        pathView.setFillAfter(true);
-        pathView.useNaturalColors();
 
-        TextView tvIcon = view.findViewById(R.id.tv_gouwuche);
-        Typeface iconfont = Typeface.createFromAsset(getActivity().getAssets(), "iconfont.ttf");
-        tvIcon.setTypeface(iconfont);
+        TextView textView = view.findViewById(R.id.tv_gouwuche);
+
+        new Iconics.IconicsBuilder().ctx(getActivity())
+                .style(new ForegroundColorSpan(Color.GREEN), new BackgroundColorSpan(Color.BLACK), new RelativeSizeSpan(2f))
+                .styleFor(BIcons.Icon.bux_toplist, new BackgroundColorSpan(Color.RED))
+                .on(textView)
+                .build();
+
     }
 }

@@ -11,10 +11,4 @@
     <string name="category_title">分类</string>
     <string name="menu_search"/>
 
-
-    <string name="gouwuche">&#xe63f;</string>
-    <string name="ic_recommend">&#xe600;</string>
-    <string name="ic_top_list">&#xe66e;</string>
-    <string name="ic_games">&#xe602;</string>
-    <string name="ic_category">&#xe652;</string>
 </resources>
