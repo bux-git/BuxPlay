@@ -1,5 +1,6 @@
 package com.example.lym.buxplay.ui.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -44,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
     ViewPager mViewPager;
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        mViewPager.setCurrentItem(3);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState: ");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -70,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
             FragmentInfo info = fragmentInfos.get(i);
             mTabLayout.addTab(  mTabLayout.newTab().setCustomView(new TabView(this,info.getImgStr(),info.getTitle(),textColor,selsectedColor,iconSize,titleSize)));
         }
-
     }
 
     private void initTooBar() {
@@ -114,6 +127,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class,  BIcons.Icon.bux_toplist.getFormattedName()));
         fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class,  BIcons.Icon.bux_games.getFormattedName()));
         fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class,  BIcons.Icon.bux_category.getFormattedName()));
+
+
         return fragmentInfos;
     }
 }
