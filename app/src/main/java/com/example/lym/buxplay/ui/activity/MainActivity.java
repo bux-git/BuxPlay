@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.lym.buxplay.R;
 import com.example.lym.buxplay.typeface.BIcons;
 import com.example.lym.buxplay.ui.adapter.ViewPagerAdapter;
-import com.example.lym.buxplay.ui.adapter.bean.FragmentInfo;
+import com.example.lym.buxplay.ui.bean.FragmentInfo;
 import com.example.lym.buxplay.ui.fragment.CategoryFragment;
 import com.example.lym.buxplay.ui.fragment.GamesFragment;
 import com.example.lym.buxplay.ui.fragment.RecommendFragment;
@@ -75,14 +75,14 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        int textColor= Color.GRAY;
-        int iconSize=22;
-        int titleSize=10;
-        int selsectedColor =getResources().getColor(R.color.colorAccent);
+        int textColor = Color.GRAY;
+        int iconSize = 22;
+        int titleSize = 10;
+        int selsectedColor = getResources().getColor(R.color.colorAccent);
 
         for (int i = 0; i < fragmentInfos.size(); i++) {
             FragmentInfo info = fragmentInfos.get(i);
-            mTabLayout.addTab(  mTabLayout.newTab().setCustomView(new TabView(this,info.getImgStr(),info.getTitle(),textColor,selsectedColor,iconSize,titleSize)));
+            mTabLayout.addTab(mTabLayout.newTab().setCustomView(new TabView(this, info.getImgStr(), info.getTitle(), textColor, selsectedColor, iconSize, titleSize)));
         }
     }
 
@@ -124,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
     private List<FragmentInfo> initFragments() {
         List<FragmentInfo> fragmentInfos = new ArrayList<>();
         fragmentInfos.add(new FragmentInfo(getString(R.string.recommend_title), RecommendFragment.class, BIcons.Icon.bux_recommend.getFormattedName()));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class,  BIcons.Icon.bux_toplist.getFormattedName()));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class,  BIcons.Icon.bux_games.getFormattedName()));
-        fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class,  BIcons.Icon.bux_category.getFormattedName()));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.top_list_title), TopListFragment.class, BIcons.Icon.bux_toplist.getFormattedName()));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.games_title), GamesFragment.class, BIcons.Icon.bux_games.getFormattedName()));
+        fragmentInfos.add(new FragmentInfo(getString(R.string.category_title), CategoryFragment.class, BIcons.Icon.bux_category.getFormattedName()));
 
 
         return fragmentInfos;

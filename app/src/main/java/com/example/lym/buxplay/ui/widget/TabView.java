@@ -23,10 +23,10 @@ public class TabView extends LinearLayout {
     private int mColor;
 
 
-    public TabView(Context context, String icons, String title, int color,int selectedColor, int iconSize, int titleSize) {
+    public TabView(Context context, String icons, String title, int color, int selectedColor, int iconSize, int titleSize) {
         super(context);
-        this.mSelectedColor=selectedColor;
-        this.mColor=color;
+        this.mSelectedColor = selectedColor;
+        this.mColor = color;
         initView(context, icons, title, color, iconSize, titleSize);
     }
 
@@ -85,10 +85,10 @@ public class TabView extends LinearLayout {
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         int color;
-        if(selected) {
-            color=mSelectedColor;
-        }else{
-            color=mColor;
+        if (selected) {
+            color = mSelectedColor;
+        } else {
+            color = mColor;
         }
         mTvIcons.setTextColor(color);
         mTvTitle.setTextColor(color);

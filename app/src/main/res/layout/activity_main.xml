@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabBackground="@drawable/main_tablayout_backgound"
-                app:tabMode="scrollable"
+                app:tabMode="fixed"
                 app:tabIndicatorColor="@android:color/transparent"
                 app:tabSelectedTextColor="@color/colorAccent"
                 app:tabTextColor="@android:color/black"/>

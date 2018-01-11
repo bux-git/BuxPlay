@@ -1,4 +1,4 @@
-package com.example.lym.buxplay.ui.adapter.bean;
+package com.example.lym.buxplay.ui.bean;
 
 /**
  * @Description：
