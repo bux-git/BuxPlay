@@ -1,4 +1,4 @@
-package com.example.lym.buxplay.typeface;
+package com.example.lym.buxplay.common.typeface;
 
 import android.content.Context;
 import android.graphics.Typeface;

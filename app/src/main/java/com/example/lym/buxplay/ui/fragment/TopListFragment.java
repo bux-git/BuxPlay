@@ -1,6 +1,5 @@
 package com.example.lym.buxplay.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lym.buxplay.R;
-import com.example.lym.buxplay.ui.activity.TestActivity;
 
 /**
  * @Description：排行
@@ -26,8 +24,8 @@ public class TopListFragment extends Fragment {
                top.setOnClickListener(new View.OnClickListener() {
                    @Override
                    public void onClick(View v) {
-                       Intent intent = new Intent(getActivity(),TestActivity.class);
-                       startActivity(intent);
+                     /*  Intent intent = new Intent(getActivity(),TestActivity.class);
+                       startActivity(intent);*/
                    }
                });
         return view;

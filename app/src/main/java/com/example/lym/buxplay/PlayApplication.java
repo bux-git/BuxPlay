@@ -1,8 +1,11 @@
 package com.example.lym.buxplay;
 
 import android.app.Application;
+import android.content.Context;
 
-import com.example.lym.buxplay.typeface.BIcons;
+import com.example.lym.buxplay.common.typeface.BIcons;
+import com.example.lym.buxplay.di.component.AppComponent;
+import com.example.lym.buxplay.di.component.DaggerAppComponent;
 import com.mikepenz.iconics.Iconics;
 
 /**
@@ -13,6 +16,18 @@ import com.mikepenz.iconics.Iconics;
 
 public class PlayApplication extends Application {
 
+
+    AppComponent mAppComponent;
+
+
+    public AppComponent getAppComponent() {
+        return mAppComponent;
+    }
+
+    public static PlayApplication get(Context context) {
+        return (PlayApplication) context.getApplicationContext();
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -20,6 +35,8 @@ public class PlayApplication extends Application {
         Iconics.init(getApplicationContext());
         //register custom fonts like this (or also provide a font definition file)
         Iconics.registerFont(new BIcons());
+
+        mAppComponent = DaggerAppComponent.builder().build();
     }
 
 }

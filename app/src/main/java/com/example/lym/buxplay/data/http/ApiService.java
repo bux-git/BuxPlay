@@ -1,11 +1,17 @@
-package com.example.lym.buxplay.http;
+package com.example.lym.buxplay.data.http;
 
 import com.example.lym.buxplay.bean.AppInfo;
 import com.example.lym.buxplay.bean.PageBean;
 
+import java.util.Map;
+
 import retrofit2.Call;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * @Description：
@@ -18,5 +24,9 @@ public interface ApiService {
 
     @GET("featured")
     public Call<PageBean<AppInfo>> getApps(@Query("p") String jsonParam);
+
+    @FormUrlEncoded
+    @POST
+    public Call<String> getUserFollowList(@Url String url,@FieldMap Map<String, String> map);
 
 }

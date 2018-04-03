@@ -18,13 +18,14 @@ import retrofit2.Response;
  */
 
 public class RecommendPresenter implements RecommendContract.Presenter {
+    private static final String TAG = "RecommendPresenter";
 
     private RecommendModel mModel;
     private RecommendContract.View mView;
 
-    public RecommendPresenter(RecommendContract.View view) {
+    public RecommendPresenter(RecommendContract.View view,RecommendModel model) {
         mView = view;
-        mModel = new RecommendModel();
+        mModel=model;
     }
 
     @Override
@@ -49,4 +50,6 @@ public class RecommendPresenter implements RecommendContract.Presenter {
             }
         });
     }
+
+
 }

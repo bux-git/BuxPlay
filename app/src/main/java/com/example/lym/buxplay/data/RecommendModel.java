@@ -2,8 +2,7 @@ package com.example.lym.buxplay.data;
 
 import com.example.lym.buxplay.bean.AppInfo;
 import com.example.lym.buxplay.bean.PageBean;
-import com.example.lym.buxplay.http.ApiService;
-import com.example.lym.buxplay.http.HttpManager;
+import com.example.lym.buxplay.data.http.ApiService;
 
 import retrofit2.Callback;
 
@@ -15,11 +14,17 @@ import retrofit2.Callback;
 
 public class RecommendModel {
 
+
+    private ApiService mService;
+
+    public RecommendModel(ApiService service) {
+        mService = service;
+    }
+
     public void getApps(String params, Callback<PageBean<AppInfo>> callback) {
-        HttpManager manager = new HttpManager();
-        manager.getRetrofit(manager.getOkHttpClient())
-                .create(ApiService.class)
-                .getApps(params)
+
+        mService.getApps(params)
                 .enqueue(callback);
     }
+
 }

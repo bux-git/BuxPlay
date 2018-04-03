@@ -11,13 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.lym.buxplay.PlayApplication;
 import com.example.lym.buxplay.R;
 import com.example.lym.buxplay.bean.AppInfo;
-import com.example.lym.buxplay.presenter.RecommendPresenter;
+import com.example.lym.buxplay.di.component.DaggerRecommendComponent;
+import com.example.lym.buxplay.di.module.RecommendModule;
 import com.example.lym.buxplay.presenter.contract.RecommendContract;
 import com.example.lym.buxplay.ui.adapter.RecommendAdapter;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +37,10 @@ public class RecommendFragment extends Fragment implements RecommendContract.Vie
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
+
+    @Inject
     ProgressDialog mDialog;
+    @Inject
     RecommendContract.Presenter mPresenter;
 
     @Nullable
@@ -41,16 +48,20 @@ public class RecommendFragment extends Fragment implements RecommendContract.Vie
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommed_layout, container, false);
         ButterKnife.bind(this, view);
+
         initData();
         return view;
     }
 
     private void initData() {
-        mDialog = new ProgressDialog(getActivity());
-        mPresenter = new RecommendPresenter(this);
+
+        DaggerRecommendComponent.builder()
+                .appComponent(((PlayApplication) getActivity().getApplicationContext()).getAppComponent())
+                .recommendModule(new RecommendModule(this))
+                .build()
+                .inject(this);
 
         mPresenter.requestData();
-
     }
 
 

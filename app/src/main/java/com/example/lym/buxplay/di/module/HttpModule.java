@@ -1,7 +1,16 @@
-package com.example.lym.buxplay.http;
+package com.example.lym.buxplay.di.module;
+
+import android.util.Log;
+
+import com.example.lym.buxplay.data.http.ApiService;
+import com.example.lym.buxplay.data.http.util.SSLSocketClient;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Singleton;
+
+import dagger.Module;
+import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -9,14 +18,18 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * @Description：
- * @author：Bux on 2018/1/10 11:22
+ * @description：
+ * @author：bux on 2018/4/2 17:56
  * @email: 471025316@qq.com
  */
 
-public class HttpManager {
+@Module
+public class HttpModule {
+    private static final String TAG = "HttpModule";
 
-    public OkHttpClient getOkHttpClient() {
+    @Provides
+    @Singleton
+    public OkHttpClient provideOkHttpClient() {
         //log拦截器
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         // 开发模式记录整个body，否则只记录基本信息如返回200，http协议版本等
@@ -29,20 +42,31 @@ public class HttpManager {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 // 读取超时时间设置
                 .readTimeout(30, TimeUnit.SECONDS)
+                .sslSocketFactory(SSLSocketClient.getSSLSocketFactory())
+                .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
 
                 .build();
 
     }
 
-    public Retrofit getRetrofit(OkHttpClient okHttpClient) {
+    @Provides
+    @Singleton
+    public Retrofit provodeRetrofit(OkHttpClient okHttpClient) {
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(ApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                // .addConverterFactory(StringConverterFactory.create())
                 .client(okHttpClient);
 
-
         return builder.build();
+    }
+
+    @Provides
+    @Singleton
+    public ApiService provideApiService(Retrofit retrofit){
+        Log.d(TAG, "provideApiService: "+retrofit);
+        return retrofit.create(ApiService.class);
     }
 }
