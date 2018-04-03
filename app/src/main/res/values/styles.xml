@@ -15,7 +15,8 @@
         <item name="android:colorBackground">#ffffff</item><!--Menu背景颜色-->
         <item name="android:textColor">#000000</item><!--menu文字颜色-->
 
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle</item> <!--新增一个item，用于控制menu-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuStyle
+        </item> <!--新增一个item，用于控制menu-->
         <!-- <item name="android:actionOverflowButtonStyle">@style/OverflowButtonStyle</item>-->
     </style>
     <!--修改toolbar弹出菜单的位置-->
@@ -25,8 +26,16 @@
     <!--修改toolbar菜单按钮的style-->
     <style name="OverflowButtonStyle" parent="@android:style/Widget.ActionButton.Overflow">
         <item name="android:src">@android:drawable/ic_menu_upload_you_tube</item>
-    </style>-->
-    <!--toolbar菜单按钮的颜色-->
-    <style name="ActionButton.Overflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
     </style>
+    -->
+    <!--toolbar菜单按钮的颜色-->
+    <style name="ActionButton.Overflow"
+           parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+
+        <item name="android:windowFullscreen">true</item>
+</style>
+
 </resources>

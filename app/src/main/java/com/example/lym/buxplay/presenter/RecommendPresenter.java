@@ -7,6 +7,8 @@ import com.example.lym.buxplay.presenter.contract.RecommendContract;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,18 +19,15 @@ import retrofit2.Response;
  * @email: 471025316@qq.com
  */
 
-public class RecommendPresenter implements RecommendContract.Presenter {
+public class RecommendPresenter extends BasePresenter<RecommendModel,RecommendContract.View> {
     private static final String TAG = "RecommendPresenter";
 
-    private RecommendModel mModel;
-    private RecommendContract.View mView;
-
-    public RecommendPresenter(RecommendContract.View view,RecommendModel model) {
-        mView = view;
-        mModel=model;
+    @Inject
+    public RecommendPresenter(RecommendModel model, RecommendContract.View view) {
+        super(model, view);
     }
 
-    @Override
+
     public void requestData() {
         mView.showLoading();
         mModel.getApps("{\"page\":0}", new Callback<PageBean<AppInfo>>() {

@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.example.lym.buxplay.data.RecommendModel;
 import com.example.lym.buxplay.data.http.ApiService;
-import com.example.lym.buxplay.presenter.RecommendPresenter;
 import com.example.lym.buxplay.presenter.contract.RecommendContract;
 
 import dagger.Module;
@@ -29,24 +28,18 @@ public class RecommendModule {
     }
 
     @Provides
-    public RecommendContract.View providesView() {
+    RecommendContract.View providesView() {
         return mView;
     }
 
     @Provides
-    public RecommendContract.Presenter providesRecommendPresenter(RecommendContract.View view, RecommendModel model) {
-        return new RecommendPresenter(view,model);
-    }
-
-
-    @Provides
-    public RecommendModel providesModel(ApiService apiService){
+    RecommendModel providesModel(ApiService apiService){
         Log.d(TAG, "providesModel: "+apiService.hashCode());
         return new RecommendModel(apiService);
     }
 
     @Provides
-    public ProgressDialog providesPDialog(RecommendContract.View view){
+    ProgressDialog providesPDialog(RecommendContract.View view){
         return new ProgressDialog(((Fragment)view).getActivity());
     }
 

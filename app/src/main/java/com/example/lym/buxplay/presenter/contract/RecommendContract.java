@@ -1,7 +1,6 @@
 package com.example.lym.buxplay.presenter.contract;
 
 import com.example.lym.buxplay.bean.AppInfo;
-import com.example.lym.buxplay.presenter.BasePresenter;
 import com.example.lym.buxplay.ui.BaseView;
 
 import java.util.List;
@@ -22,9 +21,4 @@ public interface RecommendContract {
         void showError(String msg);
     }
 
-    interface Presenter extends BasePresenter {
-
-        void requestData();
-
-    }
 }

@@ -1,21 +1,16 @@
 package com.example.lym.buxplay.ui.fragment;
 
 import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.lym.buxplay.PlayApplication;
 import com.example.lym.buxplay.R;
 import com.example.lym.buxplay.bean.AppInfo;
+import com.example.lym.buxplay.di.component.AppComponent;
 import com.example.lym.buxplay.di.component.DaggerRecommendComponent;
 import com.example.lym.buxplay.di.module.RecommendModule;
+import com.example.lym.buxplay.presenter.RecommendPresenter;
 import com.example.lym.buxplay.presenter.contract.RecommendContract;
 import com.example.lym.buxplay.ui.adapter.RecommendAdapter;
 
@@ -24,7 +19,6 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @Description：推荐
@@ -32,7 +26,7 @@ import butterknife.ButterKnife;
  * @email: 471025316@qq.com
  */
 
-public class RecommendFragment extends Fragment implements RecommendContract.View {
+public class RecommendFragment extends BaseFragment<RecommendPresenter> implements RecommendContract.View {
     private static final String TAG = "RecommendFragment";
 
     @BindView(R.id.recyclerView)
@@ -40,29 +34,27 @@ public class RecommendFragment extends Fragment implements RecommendContract.Vie
 
     @Inject
     ProgressDialog mDialog;
-    @Inject
-    RecommendContract.Presenter mPresenter;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recommed_layout, container, false);
-        ButterKnife.bind(this, view);
-
-        initData();
-        return view;
+    protected int setLayoutId() {
+        return R.layout.fragment_recommed_layout;
     }
 
-    private void initData() {
-
-        DaggerRecommendComponent.builder()
-                .appComponent(((PlayApplication) getActivity().getApplicationContext()).getAppComponent())
-                .recommendModule(new RecommendModule(this))
-                .build()
-                .inject(this);
+    @Override
+    protected void init() {
 
         mPresenter.requestData();
     }
+
+    @Override
+    public void setUpComponent(AppComponent upComponent) {
+        DaggerRecommendComponent.builder()
+                .appComponent(upComponent)
+                .recommendModule(new RecommendModule(this))
+                .build()
+                .inject(this);
+    }
+
 
 
     @Override

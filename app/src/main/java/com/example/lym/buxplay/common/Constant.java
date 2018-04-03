@@ -7,4 +7,5 @@ package com.example.lym.buxplay.common;
  */
 
 public class Constant {
+    public static final String IS_FIRST="IS_FIRST";
 }

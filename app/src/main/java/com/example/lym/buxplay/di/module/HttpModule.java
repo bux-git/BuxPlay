@@ -29,7 +29,7 @@ public class HttpModule {
 
     @Provides
     @Singleton
-    public OkHttpClient provideOkHttpClient() {
+    OkHttpClient provideOkHttpClient() {
         //log拦截器
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         // 开发模式记录整个body，否则只记录基本信息如返回200，http协议版本等
@@ -51,7 +51,7 @@ public class HttpModule {
 
     @Provides
     @Singleton
-    public Retrofit provodeRetrofit(OkHttpClient okHttpClient) {
+    Retrofit provodeRetrofit(OkHttpClient okHttpClient) {
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(ApiService.BASE_URL)
@@ -65,7 +65,7 @@ public class HttpModule {
 
     @Provides
     @Singleton
-    public ApiService provideApiService(Retrofit retrofit){
+    ApiService provideApiService(Retrofit retrofit){
         Log.d(TAG, "provideApiService: "+retrofit);
         return retrofit.create(ApiService.class);
     }
