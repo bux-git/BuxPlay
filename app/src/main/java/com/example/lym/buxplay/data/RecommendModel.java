@@ -1,10 +1,13 @@
 package com.example.lym.buxplay.data;
 
 import com.example.lym.buxplay.bean.AppInfo;
-import com.example.lym.buxplay.bean.PageBean;
+import com.example.lym.buxplay.common.rx.RxHttpResponseCompat;
 import com.example.lym.buxplay.data.http.ApiService;
 
-import retrofit2.Callback;
+import org.reactivestreams.Subscriber;
+
+import java.util.List;
+
 
 /**
  * @Description：
@@ -21,10 +24,11 @@ public class RecommendModel {
         mService = service;
     }
 
-    public void getApps(String params, Callback<PageBean<AppInfo>> callback) {
+    public void getApps(String params, Subscriber<List<AppInfo>> subscriber) {
 
         mService.getApps(params)
-                .enqueue(callback);
+                .compose(RxHttpResponseCompat.<List<AppInfo>>compatResult())
+                .subscribe(subscriber);
     }
 
 }

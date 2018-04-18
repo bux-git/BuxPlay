@@ -1,5 +1,7 @@
 package com.example.lym.buxplay.di.component;
 
+import com.example.lym.buxplay.PlayApplication;
+import com.example.lym.buxplay.common.rx.RxErrorHandler;
 import com.example.lym.buxplay.data.http.ApiService;
 import com.example.lym.buxplay.di.module.AppModule;
 import com.example.lym.buxplay.di.module.HttpModule;
@@ -19,4 +21,8 @@ import dagger.Component;
 public interface AppComponent {
 
     ApiService getApiService();
+
+    PlayApplication getApplication();
+
+    RxErrorHandler getRxErrorHandler();
 }

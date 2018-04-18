@@ -1,7 +1,5 @@
 package com.example.lym.buxplay.di.module;
 
-import android.app.Application;
-
 import com.example.lym.buxplay.PlayApplication;
 import com.google.gson.Gson;
 
@@ -27,7 +25,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    Application provideApplication() {
+    PlayApplication provideApplication() {
         return mApplication;
     }
 

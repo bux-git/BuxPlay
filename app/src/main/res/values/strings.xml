@@ -11,11 +11,29 @@
     <string name="category_title">分类</string>
     <string name="menu_search"/>
     <string name="guid_1">功能简介</string>
-    <string name="description1"> 是一个App应用商店，主要包括应用列表（推荐、游戏、分类、专题），下载（断点续传、下载管理），安装（静默安装、自动安装），搜索（热门搜索、历时搜索），管理（app升级、本地app、卸载、下载记录），设置（系统参数设置、个人信息设置）等</string>
+    <string name="description1">
+        是一个App应用商店，主要包括应用列表（推荐、游戏、分类、专题），下载（断点续传、下载管理），安装（静默安装、自动安装），搜索（热门搜索、历时搜索），管理（app升级、本地app、卸载、下载记录），设置（系统参数设置、个人信息设置）等
+    </string>
     <string name="guid_2">技术简介</string>
-    <string name="description2">项目采用了当前最主流的MVP架构，同时使用了大量2017年的热门技术：RxJava，RxBinding，RxBus，Dagger2，Retorfit，OkHttp，RxCache等等</string>
+    <string name="description2">
+        项目采用了当前最主流的MVP架构，同时使用了大量2017年的热门技术：RxJava，RxBinding，RxBus，Dagger2，Retorfit，OkHttp，RxCache等等
+    </string>
     <string name="guid_3">全新改版</string>
     <string name="description3"/>
+
+
+    <string name="error_unkown">未知错误</string>
+    <string name="error_http">网络连接错误</string>
+    <string name="error_system">服务器出错</string>
+    <string name="error_account_freeze">账户被冻结，请联系管理员</string>
+    <string name="error_api_no_perission">调用了无权限的API接口</string>
+    <string name="error_login">用户名或者密码错误</string>
+    <string name="error_http_400">bad request</string>
+    <string name="error_http_404">服务器资源找不到</string>
+    <string name="error_http_500">服务器错误</string>
+    <string name="error_socket_timeout">网络超时</string>
+    <string name="error_socket_unreachable">网络不可用</string>
+    <string name="error_token">登录失效，请重新登录</string>
 
 
 </resources>

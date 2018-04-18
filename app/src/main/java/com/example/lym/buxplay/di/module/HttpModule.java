@@ -2,6 +2,8 @@ package com.example.lym.buxplay.di.module;
 
 import android.util.Log;
 
+import com.example.lym.buxplay.PlayApplication;
+import com.example.lym.buxplay.common.rx.RxErrorHandler;
 import com.example.lym.buxplay.data.http.ApiService;
 import com.example.lym.buxplay.data.http.util.SSLSocketClient;
 
@@ -14,7 +16,7 @@ import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -56,8 +58,7 @@ public class HttpModule {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(ApiService.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                // .addConverterFactory(StringConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient);
 
         return builder.build();
@@ -65,8 +66,14 @@ public class HttpModule {
 
     @Provides
     @Singleton
-    ApiService provideApiService(Retrofit retrofit){
-        Log.d(TAG, "provideApiService: "+retrofit);
+    ApiService provideApiService(Retrofit retrofit) {
+        Log.d(TAG, "provideApiService: " + retrofit);
         return retrofit.create(ApiService.class);
+    }
+
+    @Provides
+    @Singleton
+    RxErrorHandler provideRxErrorHandler(PlayApplication application) {
+        return new RxErrorHandler(application);
     }
 }

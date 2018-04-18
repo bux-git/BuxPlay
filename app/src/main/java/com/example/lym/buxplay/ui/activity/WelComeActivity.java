@@ -30,7 +30,7 @@ public class WelComeActivity extends AppCompatActivity {
         pathView.setFillAfter(true);
         pathView.getPathAnimator()
                 .delay(100)
-                .duration(3000)
+                .duration(30)
                 .listenerEnd(new PathView.AnimatorBuilder.ListenerEnd() {
                     @Override
                     public void onAnimationEnd() {
