@@ -1,12 +1,12 @@
 package com.example.lym.buxplay.data;
 
 import com.example.lym.buxplay.bean.AppInfo;
-import com.example.lym.buxplay.common.rx.RxHttpResponseCompat;
+import com.example.lym.buxplay.bean.BaseBean;
 import com.example.lym.buxplay.data.http.ApiService;
 
-import org.reactivestreams.Subscriber;
-
 import java.util.List;
+
+import io.reactivex.Flowable;
 
 
 /**
@@ -24,11 +24,9 @@ public class RecommendModel {
         mService = service;
     }
 
-    public void getApps(String params, Subscriber<List<AppInfo>> subscriber) {
+    public Flowable<BaseBean<List<AppInfo>>> getApps(String params) {
 
-        mService.getApps(params)
-                .compose(RxHttpResponseCompat.<List<AppInfo>>compatResult())
-                .subscribe(subscriber);
+        return mService.getApps(params);
     }
 
 }

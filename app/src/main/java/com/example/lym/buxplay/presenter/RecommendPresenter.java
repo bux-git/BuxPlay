@@ -2,6 +2,7 @@ package com.example.lym.buxplay.presenter;
 
 import com.example.lym.buxplay.bean.AppInfo;
 import com.example.lym.buxplay.common.rx.RxErrorHandler;
+import com.example.lym.buxplay.common.rx.RxHttpResponseCompat;
 import com.example.lym.buxplay.common.rx.subscriber.ErrorHandlerSubscriber;
 import com.example.lym.buxplay.data.RecommendModel;
 import com.example.lym.buxplay.presenter.contract.RecommendContract;
@@ -31,21 +32,23 @@ public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendC
 
     public void requestData() {
         mView.showLoading();
-        mModel.getApps("{\"page1\":0}", new ErrorHandlerSubscriber<List<AppInfo>>(mRxErrorHandler) {
-            @Override
-            public void onNext(List<AppInfo> appInfos) {
-                if (appInfos == null || appInfos.size() == 0) {
-                    mView.showNoData();
-                } else {
-                    mView.showResult(appInfos);
-                }
-            }
+        mModel.getApps("{\"page1\":0}")
+                .compose(RxHttpResponseCompat.<List<AppInfo>>compatResult())
+                .subscribe(new ErrorHandlerSubscriber<List<AppInfo>>(mRxErrorHandler) {
+                    @Override
+                    public void onNext(List<AppInfo> appInfos) {
+                        if (appInfos == null || appInfos.size() == 0) {
+                            mView.showNoData();
+                        } else {
+                            mView.showResult(appInfos);
+                        }
+                    }
 
-            @Override
-            public void onComplete() {
-                mView.dimissLoading();
-            }
-        });
+                    @Override
+                    public void onComplete() {
+                        mView.dimissLoading();
+                    }
+                });
 
 
     }

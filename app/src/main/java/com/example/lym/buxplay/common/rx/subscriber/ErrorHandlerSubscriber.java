@@ -15,7 +15,7 @@ public abstract class ErrorHandlerSubscriber<T> extends DefaultSubscriber<T> {
 
     private RxErrorHandler mRxErrorHandler;
 
-    public ErrorHandlerSubscriber(RxErrorHandler rxErrorHandler) {
+    protected ErrorHandlerSubscriber(RxErrorHandler rxErrorHandler) {
         mRxErrorHandler = rxErrorHandler;
     }
 

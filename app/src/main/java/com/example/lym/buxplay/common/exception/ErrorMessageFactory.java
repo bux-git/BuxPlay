@@ -59,8 +59,6 @@ public class ErrorMessageFactory {
 
                 break;
 
-
-
             case ExCodeConstant.ERROR_API_SYSTEM:
                 errorMsg = context.getResources().getString(R.string.error_system);
                 break;
