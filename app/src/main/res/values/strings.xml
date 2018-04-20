@@ -3,7 +3,7 @@
     <string name="settings">设置</string>
     <string name="account">帐号</string>
     <string name="open_string">打开</string>
-    <string name="close_string"/>
+    <string name="close_string">关闭</string>
 
     <string name="recommend_title">推荐</string>
     <string name="top_list_title">排行</string>
@@ -34,6 +34,17 @@
     <string name="error_socket_timeout">网络超时</string>
     <string name="error_socket_unreachable">网络不可用</string>
     <string name="error_token">登录失效，请重新登录</string>
+
+    <string name="loading">加载中…</string>
+    <string name="empty_data">暂无数据</string>
+    <string name="hot_game">热门游戏</string>
+    <string name="hot_top">热门主题</string>
+    <string name="hot_app">热门应用</string>
+    <string name="mobi">手机号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="default_loading">loading</string>
+    <string name="reLoad">重新加载</string>
 
 
 </resources>

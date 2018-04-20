@@ -2,8 +2,6 @@ package com.example.lym.buxplay.di.module;
 
 import android.util.Log;
 
-import com.example.lym.buxplay.PlayApplication;
-import com.example.lym.buxplay.common.rx.RxErrorHandler;
 import com.example.lym.buxplay.data.http.ApiService;
 import com.example.lym.buxplay.data.http.util.SSLSocketClient;
 
@@ -46,7 +44,6 @@ public class HttpModule {
                 .readTimeout(30, TimeUnit.SECONDS)
                 .sslSocketFactory(SSLSocketClient.getSSLSocketFactory())
                 .hostnameVerifier(SSLSocketClient.getHostnameVerifier())
-
                 .build();
 
     }
@@ -71,9 +68,4 @@ public class HttpModule {
         return retrofit.create(ApiService.class);
     }
 
-    @Provides
-    @Singleton
-    RxErrorHandler provideRxErrorHandler(PlayApplication application) {
-        return new RxErrorHandler(application);
-    }
 }

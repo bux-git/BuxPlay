@@ -1,7 +1,7 @@
 package com.example.lym.buxplay.presenter.contract;
 
 import com.example.lym.buxplay.bean.AppInfo;
-import com.example.lym.buxplay.ui.BaseView;
+import com.example.lym.buxplay.ui.base.BaseView;
 
 import java.util.List;
 
@@ -18,7 +18,6 @@ public interface RecommendContract {
 
         void showNoData();
 
-        void showError(String msg);
     }
 
 }

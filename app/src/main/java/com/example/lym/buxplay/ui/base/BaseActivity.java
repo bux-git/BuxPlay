@@ -1,4 +1,4 @@
-package com.example.lym.buxplay.ui.activity;
+package com.example.lym.buxplay.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

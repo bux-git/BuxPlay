@@ -1,9 +1,7 @@
 package com.example.lym.buxplay.ui.fragment;
 
-import android.app.ProgressDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.example.lym.buxplay.R;
 import com.example.lym.buxplay.bean.AppInfo;
@@ -13,10 +11,9 @@ import com.example.lym.buxplay.di.module.RecommendModule;
 import com.example.lym.buxplay.presenter.RecommendPresenter;
 import com.example.lym.buxplay.presenter.contract.RecommendContract;
 import com.example.lym.buxplay.ui.adapter.RecommendAdapter;
+import com.example.lym.buxplay.ui.base.BaseProgressFragment;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 
@@ -26,14 +23,12 @@ import butterknife.BindView;
  * @email: 471025316@qq.com
  */
 
-public class RecommendFragment extends BaseFragment<RecommendPresenter> implements RecommendContract.View {
+public class RecommendFragment extends BaseProgressFragment<RecommendPresenter> implements RecommendContract.View {
     private static final String TAG = "RecommendFragment";
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
-    @Inject
-    ProgressDialog mDialog;
 
     @Override
     protected int setLayoutId() {
@@ -42,7 +37,6 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
     @Override
     protected void init() {
-
         mPresenter.requestData();
     }
 
@@ -56,15 +50,9 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
     }
 
 
-
     @Override
-    public void showLoading() {
-        mDialog.show();
-    }
-
-    @Override
-    public void dimissLoading() {
-        mDialog.dismiss();
+    protected void reLoad() {
+        mPresenter.requestData();
     }
 
     @Override
@@ -76,11 +64,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
 
     @Override
     public void showNoData() {
-        Toast.makeText(getActivity(), "无数据", Toast.LENGTH_SHORT).show();
+      showEmptyView();
     }
 
-    @Override
-    public void showError(String msg) {
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-    }
 }

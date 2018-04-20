@@ -1,4 +1,4 @@
-package com.example.lym.buxplay.ui.fragment;
+package com.example.lym.buxplay.ui.base;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -43,7 +43,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(setLayoutId(), container, false);
         mUnbinder = ButterKnife.bind(this, mRootView);
-        mApplication = (PlayApplication) getActivity().getApplicationContext();
+
 
         return mRootView;
     }
@@ -51,6 +51,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mApplication = (PlayApplication) getActivity().getApplicationContext();
         setUpComponent(mApplication.getAppComponent());
         init();
     }

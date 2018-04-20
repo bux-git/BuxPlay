@@ -19,6 +19,7 @@ import com.example.lym.buxplay.R;
 import com.example.lym.buxplay.common.typeface.BIcons;
 import com.example.lym.buxplay.di.component.AppComponent;
 import com.example.lym.buxplay.ui.adapter.ViewPagerAdapter;
+import com.example.lym.buxplay.ui.base.BaseActivity;
 import com.example.lym.buxplay.ui.bean.FragmentInfo;
 import com.example.lym.buxplay.ui.fragment.CategoryFragment;
 import com.example.lym.buxplay.ui.fragment.GamesFragment;

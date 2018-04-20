@@ -1,7 +1,5 @@
 package com.example.lym.buxplay.di.module;
 
-import android.app.ProgressDialog;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.example.lym.buxplay.data.RecommendModel;
@@ -38,10 +36,6 @@ public class RecommendModule {
         return new RecommendModel(apiService);
     }
 
-    @Provides
-    ProgressDialog providesPDialog(RecommendContract.View view){
-        return new ProgressDialog(((Fragment)view).getActivity());
-    }
 
 
 }

@@ -1,5 +1,7 @@
 package com.example.lym.buxplay.common.rx.subscriber;
 
+import android.content.Context;
+
 import com.example.lym.buxplay.common.exception.BaseException;
 import com.example.lym.buxplay.common.rx.RxErrorHandler;
 
@@ -13,10 +15,10 @@ import org.reactivestreams.Subscription;
 public abstract class ErrorHandlerSubscriber<T> extends DefaultSubscriber<T> {
 
 
-    private RxErrorHandler mRxErrorHandler;
+    RxErrorHandler mRxErrorHandler;
 
-    protected ErrorHandlerSubscriber(RxErrorHandler rxErrorHandler) {
-        mRxErrorHandler = rxErrorHandler;
+    ErrorHandlerSubscriber(Context context) {
+        mRxErrorHandler = new RxErrorHandler(context);
     }
 
     @Override
@@ -27,9 +29,9 @@ public abstract class ErrorHandlerSubscriber<T> extends DefaultSubscriber<T> {
 
     @Override
     public void onError(Throwable t) {
+        t.printStackTrace();
         BaseException exception = mRxErrorHandler.handlerError(t);
         mRxErrorHandler.showErrorMessage(exception);
-
 
     }
 
