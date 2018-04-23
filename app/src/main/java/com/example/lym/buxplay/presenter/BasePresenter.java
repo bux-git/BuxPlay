@@ -12,7 +12,7 @@ import com.example.lym.buxplay.ui.base.BaseView;
  * @email: 471025316@qq.com
  */
 
-public class BasePresenter<M,V extends BaseView> {
+public class BasePresenter<M, V extends BaseView> {
 
     M mModel;
     V mView;
@@ -25,9 +25,9 @@ public class BasePresenter<M,V extends BaseView> {
     }
 
     private void initContext() {
-        if(mView instanceof Fragment){
-            mContext=((Fragment)mView).getActivity();
-        }else{
+        if (mView instanceof Fragment) {
+            mContext = ((Fragment) mView).getActivity();
+        } else {
             mContext = ((Activity) mView);
         }
     }

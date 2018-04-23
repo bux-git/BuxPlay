@@ -1,9 +1,6 @@
 package com.example.lym.buxplay.presenter.contract;
 
-import com.example.lym.buxplay.bean.AppInfo;
 import com.example.lym.buxplay.ui.base.BaseView;
-
-import java.util.List;
 
 /**
  * @Description：
@@ -13,10 +10,7 @@ import java.util.List;
 
 public interface RecommendContract {
 
-    interface View extends BaseView {
-        void showResult(List<AppInfo> infos);
-
-        void showNoData();
+    interface View<T> extends BaseView<T> {
 
     }
 

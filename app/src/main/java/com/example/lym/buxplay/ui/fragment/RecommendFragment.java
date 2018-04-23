@@ -23,7 +23,7 @@ import butterknife.BindView;
  * @email: 471025316@qq.com
  */
 
-public class RecommendFragment extends BaseProgressFragment<RecommendPresenter> implements RecommendContract.View {
+public class RecommendFragment extends BaseProgressFragment<RecommendPresenter,List<AppInfo>> implements RecommendContract.View<List<AppInfo>> {
     private static final String TAG = "RecommendFragment";
 
     @BindView(R.id.recyclerView)

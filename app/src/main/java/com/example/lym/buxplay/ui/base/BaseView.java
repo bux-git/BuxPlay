@@ -6,7 +6,7 @@ package com.example.lym.buxplay.ui.base;
  * @email: 471025316@qq.com
  */
 
-public interface BaseView {
+public interface BaseView<T> {
 
     void showContentView();
 
@@ -16,5 +16,8 @@ public interface BaseView {
 
     void showError(String msg);
 
+    void showResult(T infos);
+
+    void showNoData();
 
 }

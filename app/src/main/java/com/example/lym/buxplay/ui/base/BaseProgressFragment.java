@@ -25,7 +25,7 @@ import butterknife.Unbinder;
  * @author：bux on 2018/4/20 15:58
  * @email: 471025316@qq.com
  */
-public abstract class BaseProgressFragment<T extends BasePresenter> extends Fragment implements BaseView{
+public abstract class BaseProgressFragment<T extends BasePresenter,F> extends Fragment implements BaseView<F> {
 
 
     FrameLayout mRootView;
@@ -40,8 +40,7 @@ public abstract class BaseProgressFragment<T extends BasePresenter> extends Frag
     PlayApplication mApplication;
 
     @Inject
-  public  T mPresenter;
-
+    public T mPresenter;
 
 
     protected abstract void setUpComponent(AppComponent upComponent);
@@ -59,7 +58,7 @@ public abstract class BaseProgressFragment<T extends BasePresenter> extends Frag
         mContentView = mRootView.findViewById(R.id.view_content);
         mEmptyView = mRootView.findViewById(R.id.view_empty);
         mTvTips = mRootView.findViewById(R.id.text_tip);
-        mBtnReload=mRootView.findViewById(R.id.btn_reload);
+        mBtnReload = mRootView.findViewById(R.id.btn_reload);
 
         mBtnReload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +69,6 @@ public abstract class BaseProgressFragment<T extends BasePresenter> extends Frag
 
         return mRootView;
     }
-
 
 
     @Override
@@ -95,7 +93,7 @@ public abstract class BaseProgressFragment<T extends BasePresenter> extends Frag
     /**
      * 重新加载
      */
-    protected  void reLoad(){
+    protected void reLoad() {
 
     }
 
