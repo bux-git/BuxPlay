@@ -29,7 +29,7 @@ public class RecommendFragment extends BaseProgressFragment<RecommendPresenter,L
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
-
+//dev1
 
     @Override
     protected int setLayoutId() {
