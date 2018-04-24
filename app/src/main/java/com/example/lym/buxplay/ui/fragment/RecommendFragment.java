@@ -30,6 +30,7 @@ public class RecommendFragment extends BaseProgressFragment<RecommendPresenter,L
     RecyclerView mRecyclerView;
 
 
+
     @Override
     protected int setLayoutId() {
         return R.layout.fragment_recommed_layout;
