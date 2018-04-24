@@ -4,6 +4,7 @@ import com.example.lym.buxplay.PlayApplication;
 import com.example.lym.buxplay.data.http.ApiService;
 import com.example.lym.buxplay.di.module.AppModule;
 import com.example.lym.buxplay.di.module.HttpModule;
+import com.google.gson.Gson;
 
 import javax.inject.Singleton;
 
@@ -22,5 +23,7 @@ public interface AppComponent {
     ApiService getApiService();
 
     PlayApplication getApplication();
+
+    Gson getGson();
 
 }

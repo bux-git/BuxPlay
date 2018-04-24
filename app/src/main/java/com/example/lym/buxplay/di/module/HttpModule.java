@@ -2,8 +2,11 @@ package com.example.lym.buxplay.di.module;
 
 import android.util.Log;
 
+import com.example.lym.buxplay.PlayApplication;
+import com.example.lym.buxplay.common.http.CommonParamsInterceptor;
+import com.example.lym.buxplay.common.http.util.SSLSocketClient;
 import com.example.lym.buxplay.data.http.ApiService;
-import com.example.lym.buxplay.data.http.util.SSLSocketClient;
+import com.google.gson.Gson;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,14 +32,18 @@ public class HttpModule {
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient() {
+    OkHttpClient provideOkHttpClient(Gson gson, PlayApplication context) {
         //log拦截器
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        CommonParamsInterceptor commonParamsInterceptor=new CommonParamsInterceptor(context,gson);
+
         // 开发模式记录整个body，否则只记录基本信息如返回200，http协议版本等
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
                 // HeadInterceptor实现了Interceptor，用来往Request Header添加一些业务相关数据，如APP版本，token信息
 //                .addInterceptor(new HeadInterceptor())
+
+                .addInterceptor(commonParamsInterceptor)
                 .addInterceptor(logging)
                 // 连接超时时间设置
                 .connectTimeout(30, TimeUnit.SECONDS)
@@ -67,5 +74,6 @@ public class HttpModule {
         Log.d(TAG, "provideApiService: " + retrofit);
         return retrofit.create(ApiService.class);
     }
+
 
 }

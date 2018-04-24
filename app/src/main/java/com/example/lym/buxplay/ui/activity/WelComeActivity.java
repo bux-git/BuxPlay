@@ -10,7 +10,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import com.eftimoff.androipathview.PathView;
 import com.example.lym.buxplay.R;
 import com.example.lym.buxplay.common.Constant;
-import com.example.lym.buxplay.data.ACache;
+import com.example.lym.buxplay.common.util.ACache;
 
 /**
  * @description：

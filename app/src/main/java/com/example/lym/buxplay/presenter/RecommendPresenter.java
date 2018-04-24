@@ -27,7 +27,7 @@ public class RecommendPresenter extends BasePresenter<RecommendModel, RecommendC
 
     public void requestData() {
 
-        mModel.getApps("{\"page1\":0}")
+        mModel.getApps("{\"page\":0}")
                 .compose(RxHttpResponseCompat.<List<AppInfo>>compatResult())
                 .subscribe(new ProgressSubscriber<List<AppInfo>>(mContext, mView) {
                     @Override

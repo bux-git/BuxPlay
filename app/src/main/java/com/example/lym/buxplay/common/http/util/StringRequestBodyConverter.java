@@ -1,4 +1,4 @@
-package com.example.lym.buxplay.data.http.util;
+package com.example.lym.buxplay.common.http.util;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
