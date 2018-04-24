@@ -42,7 +42,6 @@ public class HttpModule {
         return new OkHttpClient.Builder()
                 // HeadInterceptor实现了Interceptor，用来往Request Header添加一些业务相关数据，如APP版本，token信息
 //                .addInterceptor(new HeadInterceptor())
-
                 .addInterceptor(commonParamsInterceptor)
                 .addInterceptor(logging)
                 // 连接超时时间设置
