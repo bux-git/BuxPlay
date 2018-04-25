@@ -5,13 +5,8 @@ import com.example.lym.buxplay.bean.BaseBean;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
-import okhttp3.MultipartBody;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
+import io.reactivex.Observable;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
@@ -21,20 +16,10 @@ import retrofit2.http.Query;
  */
 
 public interface ApiService {
-    public static final String BASE_URL = "http://112.124.22.238:8081/course_api/cniaoplay/";
+     static final String BASE_URL = "http://112.124.22.238:8081/course_api/cniaoplay/";
 
     @GET("featured")
-    public Flowable<BaseBean<List<AppInfo>>> getApps(@Query("p") String jsonParam);
+    Observable<BaseBean<List<AppInfo>>> getApps(@Query("p") String jsonParam);
 
 
-    @POST("featured")
-    public Flowable<BaseBean> postBody(@Body BaseBean baseBean);
-
-
-    @FormUrlEncoded
-    @POST("featured")
-    public Flowable<BaseBean> postForm(@Field("p") String p,@Field("b") String b);
-
-    @POST("featured")
-    public Flowable<BaseBean> postMultipart(@Body    MultipartBody multipartBody);
 }

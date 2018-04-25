@@ -9,6 +9,8 @@ import com.example.lym.buxplay.common.util.ProgressDialogHandler;
 
 import org.reactivestreams.Subscription;
 
+import io.reactivex.disposables.Disposable;
+
 /**
  * @description：
  * @author：bux on 2018/4/19 11:48
@@ -35,14 +37,11 @@ public abstract class ProgressDialogSubscriber<T> extends ErrorHandlerSubscriber
     }
 
     @Override
-    public void onSubscribe(Subscription s) {
-        super.onSubscribe(s);
-        mSubscription = s;
+    public void onSubscribe(Disposable d) {
         if (isShow) {
             mProgressDialog.showProgressDialog();
         }
     }
-
 
     @Override
     public void onError(Throwable t) {

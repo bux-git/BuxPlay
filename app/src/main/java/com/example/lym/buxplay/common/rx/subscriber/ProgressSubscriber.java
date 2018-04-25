@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.lym.buxplay.common.exception.BaseException;
 import com.example.lym.buxplay.ui.base.BaseView;
 
-import org.reactivestreams.Subscription;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @description：
@@ -23,11 +23,9 @@ public abstract class ProgressSubscriber<T> extends ErrorHandlerSubscriber<T> {
 
 
     @Override
-    public void onSubscribe(Subscription s) {
-        super.onSubscribe(s);
+    public void onSubscribe(Disposable d) {
         mBaseView.showProgressView();
     }
-
 
     @Override
     public void onError(Throwable t) {

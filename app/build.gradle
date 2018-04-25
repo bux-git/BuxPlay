@@ -68,5 +68,8 @@ dependencies {
     implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
     implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
 
+    //权限
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
 
 }

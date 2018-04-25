@@ -6,7 +6,7 @@ import com.example.lym.buxplay.data.http.ApiService;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
+import io.reactivex.Observable;
 
 
 /**
@@ -24,7 +24,7 @@ public class RecommendModel {
         mService = service;
     }
 
-    public Flowable<BaseBean<List<AppInfo>>> getApps(String params) {
+    public Observable<BaseBean<List<AppInfo>>> getApps(String params) {
 
         return mService.getApps(params);
     }

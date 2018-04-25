@@ -11,9 +11,9 @@ import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
 
 import javax.inject.Singleton;
 
@@ -44,16 +44,17 @@ public class AppModule {
     @Provides
     @Singleton
     Gson provideGson() {
-        return  new GsonBuilder()
+        return new GsonBuilder()
                 .registerTypeAdapter(
-                        new TypeToken<TreeMap<String, Object>>(){}.getType(),
-                        new JsonDeserializer<TreeMap<String, Object>>() {
+                        new TypeToken<Map<String, Object>>() {
+                        }.getType(),
+                        new JsonDeserializer<Map<String, Object>>() {
                             @Override
-                            public TreeMap<String, Object> deserialize(
+                            public Map<String, Object> deserialize(
                                     JsonElement json, Type typeOfT,
                                     JsonDeserializationContext context) throws JsonParseException {
 
-                                TreeMap<String, Object> treeMap = new TreeMap<>();
+                                Map<String, Object> treeMap = new HashMap<String, Object>();
                                 JsonObject jsonObject = json.getAsJsonObject();
                                 Set<Map.Entry<String, JsonElement>> entrySet = jsonObject.entrySet();
                                 for (Map.Entry<String, JsonElement> entry : entrySet) {

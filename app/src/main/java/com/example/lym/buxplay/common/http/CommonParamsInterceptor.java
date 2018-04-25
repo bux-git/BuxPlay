@@ -7,6 +7,7 @@ import com.example.lym.buxplay.common.Constant;
 import com.example.lym.buxplay.common.util.DensityUtil;
 import com.example.lym.buxplay.common.util.DeviceUtils;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -70,7 +71,8 @@ public class CommonParamsInterceptor implements Interceptor {
                     if (oldParamJson == null) {
                         continue;
                     }
-                    HashMap<String, Object> oldParamMap = mGson.fromJson(oldParamJson, HashMap.class);
+                    HashMap<String, Object> oldParamMap = mGson.fromJson(oldParamJson, new TypeToken<Map<String, Object>>() {
+                    }.getType());
                     //将已经组合得参数重新写入rootMap中
                     for (Map.Entry<String, Object> entry : oldParamMap.entrySet()) {
                         rootMap.put(entry.getKey(), entry.getValue());

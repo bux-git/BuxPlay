@@ -3,7 +3,6 @@ package com.example.lym.buxplay.common.rx;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.lym.buxplay.common.exception.ApiException;
 import com.example.lym.buxplay.common.exception.BaseException;
 import com.example.lym.buxplay.common.exception.ErrorMessageFactory;
 import com.example.lym.buxplay.common.exception.ExCodeConstant;
@@ -30,7 +29,7 @@ public class RxErrorHandler {
     public BaseException handlerError(Throwable e) {
         BaseException exception = new BaseException();
 
-        if (e instanceof ApiException) {
+        if (e instanceof BaseException) {
 
             return (BaseException) e;
 
@@ -46,6 +45,7 @@ public class RxErrorHandler {
             exception.setCode(ExCodeConstant.SOCKET_ERROR);
 
         } else {
+
             exception.setCode(ExCodeConstant.UNKNOWN_ERROR);
 
         }
